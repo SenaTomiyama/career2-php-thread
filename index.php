@@ -58,26 +58,6 @@ if (empty($_SESSION['token'])) {
             <input class="btn btn-primary"  type="submit" name="btn" value="投稿する">
         </form>
 
-
-        <form method="POST" action="<?php print($_SERVER['PHP_SELF']) ?>">
-            <input type="hidden" name="method" value="DELETE">
-            <button class="btn btn-danger" type="submit">投稿を全削除する</button>
-        </form>
-
-        <h2 class="text-muted py-3">スレッド</h2>
-        <form method="POST" action="<?php print($_SERVER['PHP_SELF']) ?>">
-            <div class="form-group">
-                <label for="name">名前</label>
-                <input type="text" class="form-control" id="name" name="personal_name" placeholder="名前" required>
-            </div>
-            <div class="form-group">
-                <label for="contents">内容</label>
-                <textarea class="form-control" id="contents" name="contents" rows="8" cols="40" placeholder="内容" required></textarea>
-            </div>
-            <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>">
-            <button class="btn btn-primary" type="submit">投稿する</button>
-        </form>
-
         <hr>
 
         <h2 class="text-muted py-3">スレッド</h2>
