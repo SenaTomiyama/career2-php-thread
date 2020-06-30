@@ -76,6 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["method"]) && $_POST["method"] === "DELETE") {
         $thread->delete();
     } else {
+        checkToken();
         $thread->post($_POST['personal_name'], $_POST['contents']);
     }
 }
