@@ -2,15 +2,22 @@
 
 date_default_timezone_set('Asia/Tokyo');
 
+require 'vendor/autoload.php';
+
+use Dotenv\Dotenv;
+
 class Thread
 {
     private $name;
     private const THREAD_FILE = 'thread.txt';
+    private $dotenv;
 
     // コンストラクタ
     public function __construct(string $name)
     {
         $this->name = $name;
+        $this->dotenv = Dotenv::createImmutable(__DIR__);
+        $this->dotenv->load();
     }
 
     public function getList()
@@ -18,7 +25,8 @@ class Thread
         return file_get_contents(self::THREAD_FILE);
     }
 
-    public function post(string $personal_name, string $contents) {
+    public function post(string $personal_name, string $contents)
+    {
         $data = "<hr>\n";
         $data = $data."<p>投稿日時: ".date("Y/m/d H:i:s")."</p>\n";
         $data = $data."<p>投稿者:".$personal_name."</p>\n";
@@ -28,7 +36,8 @@ class Thread
         file_put_contents(self::THREAD_FILE, $data, FILE_APPEND);
     }
 
-    public function delete() {
+    public function delete()
+    {
         file_put_contents(self::THREAD_FILE, "");
     }
 }
