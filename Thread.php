@@ -9,7 +9,6 @@ use Dotenv\Dotenv;
 class Thread
 {
     private $name;
-    private const THREAD_FILE = 'thread.txt';
     private $dotenv;
     private $dbh;
 
@@ -19,7 +18,6 @@ class Thread
         $this->name = $name;
         $this->dotenv = Dotenv::createImmutable(__DIR__);
         $this->dotenv->load();
-
         $this->dbh = new PDO('mysql:dbname='.$_ENV['DB_NAME'].';host=127.0.0.1', $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
     }
 
